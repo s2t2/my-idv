@@ -1,7 +1,8 @@
 # My Identity Verification Service
 
-A proof of concept Identity Verification (IDV) Service.
+[![Build Status](https://travis-ci.com/s2t2/my-idv.svg?token=J3sGjFcxTXFQzbQJjiqb&branch=master)](https://travis-ci.com/s2t2/my-idv)
 
+A proof of concept Identity Verification (IDV) Service.
 
 Example Photo:
 
@@ -61,4 +62,16 @@ Recognize text from a driver's license photo (see "img" directory):
 
 ```sh
 python app/vision_service.py
+```
+
+## Testing
+
+```sh
+pip install pytest # (first time only)
+```
+
+Run tests:
+
+```sh
+pytest
 ```

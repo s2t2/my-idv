@@ -22,12 +22,14 @@ def recognize_text(client, img_filepath):
         img_contents = img_file.read()
     img = types.Image(content=img_contents) #> <class 'google.cloud.vision_v1.types.Image'>
     response = client.text_detection(image=img) #> <class 'google.cloud.vision_v1.types.AnnotateImageResponse'>
-    return response
-    #texts = response.text_annotations
-    #text = texts[0]
-    #return text
+    #return response
+    texts = response.text_annotations
+    text = texts[0].description
+    return text
 
 if __name__ == "__main__":
+
+    client = vision_client()
 
     names = ["matthew", "michael", "michelle", "sally"] # TODO: get all files in img dir
     print("NAMES:", names)
@@ -38,17 +40,6 @@ if __name__ == "__main__":
 
     img_filepath = os.path.join(os.path.dirname(__file__), "..", "img", f"{name}.png")
     print("IMG FILE:", os.path.isfile(img_filepath), os.path.abspath(img_filepath))
-    with io.open(img_filepath, "rb") as image_file:
-        content = image_file.read()
-    img = types.Image(content=content) #> <class 'google.cloud.vision_v1.types.Image'>
-    #print("IMG:", type(img))
 
-    client = vision_client()
-    response = client.text_detection(image=img) #> <class 'google.cloud.vision_v1.types.AnnotateImageResponse'>
-    #print("RESPONSE", type(response))
-    print("------------")
-
-    texts = response.text_annotations
-    text = texts[0]
-    #print(type(text)) #> <class 'google.cloud.vision_v1.types.EntityAnnotation'>
-    print(text.description)
+    response_text = recognize_text(client, img_filepath)
+    print(response_text)

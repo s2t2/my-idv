@@ -34,3 +34,6 @@ Following up, maybe getting somewhere with Amazon:
   + https://docs.aws.amazon.com/rekognition/latest/dg/faces-comparefaces.html
   + https://aws.amazon.com/getting-started/tutorials/detect-analyze-compare-faces-rekognition/
   + https://cloudacademy.com/blog/google-vision-vs-amazon-rekognition/
+  + https://us-east-2.console.aws.amazon.com/rekognition/home?region=us-east-2#/face-comparison
+
+Yeah, definitely on to something :-D

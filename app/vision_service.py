@@ -2,24 +2,26 @@ import io # necessary?
 import os
 from pprint import pprint
 
-from dotenv import load_dotenv
-#from oauth2client.service_account import ServiceAccountCredentials
+#from dotenv import load_dotenv
 from google.cloud import vision
 from google.cloud.vision import types
 
-load_dotenv() # load implicit creds GOOGLE_APPLICATION_CREDENTIALS
+#from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2 import service_account
+
+#load_dotenv() # load implicit creds GOOGLE_APPLICATION_CREDENTIALS
 
 if __name__ == "__main__":
     CREDS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "auth", "credentials.json")
     print("CREDS FILE:", os.path.isfile(CREDS_FILEPATH), os.path.abspath(CREDS_FILEPATH))
 
-    #creds = ServiceAccountCredentials.from_json_keyfile_name(CREDS_FILEPATH)
-    #print("CREDS", type(creds))
-    #
-    #client = vision.ImageAnnotatorClient(credentials=creds)
-    #print("VISION CLIENT:", type(client), "\n", dir(client))
+    #client = vision.ImageAnnotatorClient()
 
-    client = vision.ImageAnnotatorClient()
+    #creds = ServiceAccountCredentials.from_json_keyfile_name(CREDS_FILEPATH)
+    creds = service_account.Credentials.from_service_account_file(CREDS_FILEPATH)
+    print("CREDS", type(creds))
+    client = vision.ImageAnnotatorClient(credentials=creds)
+
     print("VISION CLIENT:", type(client))
     pprint(dir(client))
     print("------------")

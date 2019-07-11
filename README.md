@@ -1,6 +1,31 @@
 # My Identity Verification Service
 
-My Proof of Concept IDV Service.
+A proof of concept Identity Verification (IDV) Service.
+
+
+Example Photo:
+
+![](img/sally.png)
+
+Example Output:
+
+    NEW YORK STATE
+    Commission
+    of Motor Vehicles
+    DRIVER LICENSE
+    ID: 000 000 000
+    CLASS DM
+    SAMPLE,SALLY
+    1010 ANYPLACE ST
+    YOURCITY NY 12121
+    DOB: 07-18-83
+    SEX: F EYES: BL HT: 5-09
+    E: NONE
+    R: NONE
+    ISSUED: 07-18-05 EXPIRES: 07-18-13
+    Sety Somple
+    CELSIOR
+    83145522
 
 ## Setup
 

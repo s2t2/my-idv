@@ -11,7 +11,7 @@ CREDS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "auth", "credenti
 
 def vision_client(creds_filepath=CREDS_FILEPATH):
     #print("CREDS FILE:", os.path.isfile(creds_filepath), os.path.abspath(creds_filepath))
-    creds = service_account.Credentials.from_service_account_file(CREDS_FILEPATH)
+    creds = service_account.Credentials.from_service_account_file(creds_filepath)
     #print("CREDS", type(creds))
     client = vision.ImageAnnotatorClient(credentials=creds)
     #print("VISION CLIENT:", type(client))

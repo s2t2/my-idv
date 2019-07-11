@@ -17,6 +17,16 @@ def vision_client(creds_filepath=CREDS_FILEPATH):
     #print("VISION CLIENT:", type(client))
     return client
 
+def recognize_text(client, img_filepath):
+    with io.open(img_filepath, "rb") as img_file:
+        img_contents = img_file.read()
+    img = types.Image(content=img_contents) #> <class 'google.cloud.vision_v1.types.Image'>
+    response = client.text_detection(image=img) #> <class 'google.cloud.vision_v1.types.AnnotateImageResponse'>
+    return response
+    #texts = response.text_annotations
+    #text = texts[0]
+    #return text
+
 if __name__ == "__main__":
 
     names = ["matthew", "michael", "michelle", "sally"] # TODO: get all files in img dir

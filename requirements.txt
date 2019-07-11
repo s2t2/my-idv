@@ -1,3 +1,1 @@
-#python-dotenv
-#oauth2client
 google-cloud-vision

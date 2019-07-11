@@ -15,8 +15,6 @@ def vision_client(creds_filepath=CREDS_FILEPATH):
     #print("CREDS", type(creds))
     client = vision.ImageAnnotatorClient(credentials=creds)
     #print("VISION CLIENT:", type(client))
-    #pprint(dir(client))
-    #print("------------")
     return client
 
 if __name__ == "__main__":
@@ -38,7 +36,6 @@ if __name__ == "__main__":
     client = vision_client()
     response = client.text_detection(image=img) #> <class 'google.cloud.vision_v1.types.AnnotateImageResponse'>
     #print("RESPONSE", type(response))
-    #pprint(dir(response))
     print("------------")
 
     texts = response.text_annotations

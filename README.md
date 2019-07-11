@@ -62,3 +62,15 @@ Recognize text from a driver's license photo (see "img" directory):
 ```sh
 python app/vision_service.py
 ```
+
+## Testing
+
+```sh
+pip install pytest # (first time only)
+```
+
+Run tests:
+
+```sh
+pytest
+```

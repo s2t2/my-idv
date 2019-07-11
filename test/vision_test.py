@@ -26,7 +26,8 @@ def test_local_image():
 def test_text_recognition():
     client = vision_client()
     image_filepath = os.path.join(os.path.dirname(__file__), "..", "img", "sally.png")
-    assert recognize_text(client, image_filepath) == "NEW YORK STATE\nCommission\nof Motor Vehicles\nDRIVER LICENSE\nID: 000 000 000\nCLASS DM\nSAMPLE,SALLY\n1010 ANYPLACE ST\nYOURCITY NY 12121\nDOB: 07-18-83\nSEX: F EYES: BL HT: 5-09\nE: NONE\nR: NONE\nISSUED: 07-18-05 EXPIRES: 07-18-13\nSety Somple\nCELSIOR\n83145522\n"
+    parsed_response = recognize_text(client, image_filepath)
+    assert parsed_response == "NEW YORK STATE\nCommission\nof Motor Vehicles\nDRIVER LICENSE\nID: 000 000 000\nCLASS DM\nSAMPLE,SALLY\n1010 ANYPLACE ST\nYOURCITY NY 12121\nDOB: 07-18-83\nSEX: F EYES: BL HT: 5-09\nE: NONE\nR: NONE\nISSUED: 07-18-05 EXPIRES: 07-18-13\nSety Somple\nCELSIOR\n83145522\n"
 
 @pytest.mark.skipif(CI, reason="requires real credentials, which aren't on the CI server")
 def test_face_recognition():

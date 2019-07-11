@@ -5,7 +5,7 @@ import pytest
 from google.cloud.vision_v1 import ImageAnnotatorClient
 from google.cloud.vision_v1.types import Image, AnnotateImageResponse, FaceAnnotation
 
-from app.vision_service import vision_client, recognize_text
+from app.vision_service import local_image, vision_client, recognize_text
 
 load_dotenv()
 

@@ -27,16 +27,24 @@ if __name__ == "__main__":
         TargetImage = {"Bytes": selfie_contents}
     )
 
-    print(type(response))
+    #print(type(response))
+    #pprint(response)
+    matches = response["FaceMatches"]
+    if matches:
+        #print("FACE MATCHES!")
+        for match in matches:
+            bbox = match["Face"]["BoundingBox"]
+            similarity = str(match["Similarity"])
+            print(f"FACE MATCH {bbox['Left']} {bbox['Top']} ({similarity}% CONFIDENCE)")
 
-    pprint(response)
-
-    for match in response["FaceMatches"]:
-        bbox = match["Face"]["BoundingBox"]
-        similarity = str(match["Similarity"])
-
-        print(f"Face at {bbox['Left']} {bbox['Top']} ({similarity}% confidence)")
-
+    else:
+        #print("NO MATCHES")
+        nonmatches = response["UnmatchedFaces"]
+        for nonmatch in nonmatches:
+            #print(nonmatch)
+            bbox = nonmatch["BoundingBox"]
+            confidence = str(nonmatch["Confidence"])
+            print(f"NO MATCH {bbox['Left']} {bbox['Top']} ({confidence}% confidence)")
 
 
 

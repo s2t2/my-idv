@@ -1,22 +1,24 @@
 
 # adapted from: https://docs.aws.amazon.com/rekognition/latest/dg/faces-comparefaces.html
 
+#from pprint import pprint
 import os
-from pprint import pprint
-
+from dotenv import load_dotenv
 import boto3
 
 if __name__ == "__main__":
 
-    AWS_REGION = os.getenv("AWS_REGION", default="us-east-1")
+    AWS_REGION = os.getenv("AWS_REGION", default="us-east-2")
     client = boto3.client("rekognition", region_name=AWS_REGION)
 
-    license_filepath = os.path.join(os.path.dirname(__file__), "..", "img", "sally.png")
+    IMG1 = os.getenv("IMG1", default="sally.png")
+    license_filepath = os.path.join(os.path.dirname(__file__), "..", "img", IMG1)
     licence_file = open(license_filepath, "rb")
     license_contents = licence_file.read()
     licence_file.close()
 
-    selfie_filepath = os.path.join(os.path.dirname(__file__), "..", "img", "sally.png")
+    IMG2 = os.getenv("IMG2", default="sally.png")
+    selfie_filepath = os.path.join(os.path.dirname(__file__), "..", "img", IMG2)
     selfie_file = open(selfie_filepath, "rb")
     selfie_contents = selfie_file.read()
     selfie_file.close()

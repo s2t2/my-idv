@@ -2,12 +2,14 @@
 # adapted from: https://docs.aws.amazon.com/rekognition/latest/dg/faces-comparefaces.html
 
 import os
+from pprint import pprint
 
 import boto3
 
 if __name__ == "__main__":
 
-    client = boto3.client("rekognition", region_name="us-east-1")
+    AWS_REGION = os.getenv("AWS_REGION", default="us-east-1")
+    client = boto3.client("rekognition", region_name=AWS_REGION)
 
     license_filepath = os.path.join(os.path.dirname(__file__), "..", "img", "sally.png")
     licence_file = open(license_filepath, "rb")
@@ -29,7 +31,7 @@ if __name__ == "__main__":
 
     pprint(response)
 
-    for match in response["matches"]:
+    for match in response["FaceMatches"]:
         bbox = match["Face"]["BoundingBox"]
         similarity = str(match["Similarity"])
 

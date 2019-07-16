@@ -52,9 +52,18 @@ Yeah, definitely on to something :-D
   + https://stackoverflow.com/questions/49970730/botocore-exceptions-nocredentialserror-unable-to-locate-credentials-even-afte
 
 
+```sh
+mkdir ~/.aws
+touch ~/.aws/credentials
+code ~/.aws/credentials
+```
 
-
-
+```sh
+# ~/.aws/credentials
+[default]
+aws_access_key_id = YOUR_ACCESS_KEY
+aws_secret_access_key = YOUR_SECRET_KEY
+```
 
 
 

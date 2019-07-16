@@ -3,5 +3,7 @@
 .env
 
 auth/credentials.json
+auth/google_creds.json
+auth/amazon_creds.csv
 
 __pycache__/

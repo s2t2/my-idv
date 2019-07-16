@@ -37,3 +37,36 @@ Following up, maybe getting somewhere with Amazon:
   + https://us-east-2.console.aws.amazon.com/rekognition/home?region=us-east-2#/face-comparison
 
 Yeah, definitely on to something :-D
+
+### Amazon Face Comparison
+
+  + https://github.com/awsdocs/amazon-rekognition-developer-guide/tree/master/code_examples/python_examples
+  + https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#installation
+  + https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#using-boto-3
+
+  + https://stackoverflow.com/questions/40377662/boto3-client-noregionerror-you-must-specify-a-region-error-only-sometimes
+  + https://github.com/venth/aws-adfs/issues/52#issuecomment-330078608
+  + https://github.com/aws/aws-cli
+  + https://stackoverflow.com/questions/33297172/boto3-error-botocore-exceptions-nocredentialserror-unable-to-locate-credential
+  + https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#cli-aws-help-config-vars
+  + https://stackoverflow.com/questions/49970730/botocore-exceptions-nocredentialserror-unable-to-locate-credentials-even-afte
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Setup Steps:
+
+  1. Create a new AWS user called "idv-user-1" and add to a group called "idv-users". The group should have access to the "AmazonRekognitionFullAccess" permission.
+  2. Generate credentials for the user. Download the resulting CSV file and save it in this repo as "auth/amazon_creds.csv".

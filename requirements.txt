@@ -1,2 +1,3 @@
 python-dotenv
 google-cloud-vision
+boto3 #==1.0.0

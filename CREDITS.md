@@ -51,6 +51,12 @@ Yeah, definitely on to something :-D
   + https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#cli-aws-help-config-vars
   + https://stackoverflow.com/questions/49970730/botocore-exceptions-nocredentialserror-unable-to-locate-credentials-even-afte
 
+Setup Steps:
+
+  1. Create a new AWS user called "idv-user-1" and add to a group called "idv-users". The group should have access to the "AmazonRekognitionFullAccess" permission.
+  2. Generate credentials for the user. Download the resulting CSV file and save it in this repo as "auth/amazon_creds.csv".
+
+JK, use a credentials file instead:
 
 ```sh
 mkdir ~/.aws
@@ -64,18 +70,3 @@ code ~/.aws/credentials
 aws_access_key_id = YOUR_ACCESS_KEY
 aws_secret_access_key = YOUR_SECRET_KEY
 ```
-
-
-
-
-
-
-
-
-
-
-
-Setup Steps:
-
-  1. Create a new AWS user called "idv-user-1" and add to a group called "idv-users". The group should have access to the "AmazonRekognitionFullAccess" permission.
-  2. Generate credentials for the user. Download the resulting CSV file and save it in this repo as "auth/amazon_creds.csv".

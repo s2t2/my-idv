@@ -2,7 +2,55 @@
 
 [![Build Status](https://travis-ci.com/s2t2/my-idv.svg?token=J3sGjFcxTXFQzbQJjiqb&branch=master)](https://travis-ci.com/s2t2/my-idv)
 
-A proof of concept Identity Verification (IDV) Service.
+A proof of concept Identity Verification (IDV) Service. Reads the text from a user's driver's license, and compares the face in the driver's license to a selfie provided by the user.
+
+## Setup
+
+### Installation
+
+Install from source:
+
+```sh
+git clone git@github.com:s2t2/my-idv.git
+cd my-idv/
+```
+
+### Creds
+
+[Obtain Google API credentials](https://console.cloud.google.com/apis/credentials) for a project with access to the Google Cloud Vision API. Store the credentials in this repo as "auth/credentials.json".
+
+
+Obtain [Amazon API credentials](https://console.aws.amazon.com/iam/home?#/users) for an IAM user associated with an IAM group that has access to the `AmazonRekognitionFullAccess` permission. And store the resulting values in a local configuration file:
+
+```sh
+# ~/.aws/credentials
+[default]
+aws_access_key_id = YOUR_ACCESS_KEY
+aws_secret_access_key = YOUR_SECRET_KEY
+```
+
+### Env
+
+```sh
+conda create -n idv-env python=3.7 # (first time only)
+conda activate idv-env
+```
+
+### Packages
+
+```sh
+pip install -r requirements.txt # # (first time only)
+```
+
+## Usage
+
+### Parsing a Driver's License
+
+Recognize text from a driver's license photo (see "img" directory):
+
+```sh
+python app/vision_service.py
+```
 
 Example Photo:
 
@@ -28,49 +76,31 @@ Example Output:
     CELSIOR
     83145522
 
-## Setup
+### Comparing Faces
 
-### Installation
-
-Install from source:
+Compare faces from two images, ideally a selfie and a driver's license you've stored in the "img" directory:
 
 ```sh
-git clone git@github.com:s2t2/my-idv.git
-cd my-idv/
+python app/compare_faces.py
+# ... OR... using specific images:
+IMG1="my-selfie.jpg" IMG2="my-license.jpg" python app/compare_faces.py
 ```
 
-### Creds
-
-[Get credentials](https://console.cloud.google.com/apis/credentials) for a project with access to the Google Cloud Vision API. Store the credentials in "auth/credentials.json".
-
-### Env
+Example output:
 
 ```sh
-conda create -n idv-env python=3.7 # (first time only)
-conda activate idv-env
-```
-
-### Packages
-
-```sh
-pip install -r requirements.txt # # (first time only)
-```
-
-## Usage
-
-Recognize text from a driver's license photo (see "img" directory):
-
-```sh
-python app/vision_service.py
+#> FACE MATCH (99.76588439941406% CONFIDENCE)
 ```
 
 ## Testing
+
+Install the `pytest` package:
 
 ```sh
 pip install pytest # (first time only)
 ```
 
-Run tests:
+Run automated tests:
 
 ```sh
 pytest

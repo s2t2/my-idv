@@ -17,7 +17,7 @@ cd my-idv/
 
 ### Creds
 
-[Obtain Google API credentials](https://console.cloud.google.com/apis/credentials) for a project with access to the Google Cloud Vision API. Store the credentials in this repo as "auth/credentials.json".
+Obtain [Google API credentials](https://console.cloud.google.com/apis/credentials) for a project with access to the Google Cloud Vision API. Store the credentials in this repo as "auth/credentials.json".
 
 
 Obtain [Amazon API credentials](https://console.aws.amazon.com/iam/home?#/users) for an IAM user associated with an IAM group that has access to the `AmazonRekognitionFullAccess` permission. And store the resulting values in a local configuration file:
@@ -31,6 +31,8 @@ aws_secret_access_key = YOUR_SECRET_KEY
 
 ### Env
 
+Setup a virtual environment:
+
 ```sh
 conda create -n idv-env python=3.7 # (first time only)
 conda activate idv-env
@@ -38,8 +40,10 @@ conda activate idv-env
 
 ### Packages
 
+Install Python package dependencies:
+
 ```sh
-pip install -r requirements.txt # # (first time only)
+pip install -r requirements.txt # (first time only)
 ```
 
 ## Usage
@@ -52,11 +56,11 @@ Recognize text from a driver's license photo (see "img" directory):
 python app/vision_service.py
 ```
 
-Example Photo:
+Example driver's license photo:
 
 ![](img/sally.png)
 
-Example Output:
+Example output:
 
     NEW YORK STATE
     Commission
